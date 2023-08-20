@@ -1,5 +1,8 @@
 import { styled } from "styled-components";
 import "./App.css";
+import H1 from "./components/Typography/H1";
+import Text from "./components/Typography/Text";
+import Cards from "./components/Cards";
 
 const Container = styled.div`
   width: calc(100% - 220px);
@@ -11,7 +14,18 @@ const Container = styled.div`
 `;
 
 function App() {
-  return <Container><h1>Task List</h1></Container>;
+  return (
+    <Container>
+      <H1>✔️ Task List</H1>
+      <Text>
+        Break your life to simple tasks to get things done!
+        <br />
+        Does not matter how many tasks you done, It’s important to break to
+        small tasks and be on progress.
+      </Text>
+      <Cards />
+    </Container>
+  );
 }
 
 export default App;
