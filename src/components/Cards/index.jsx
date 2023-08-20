@@ -2,9 +2,10 @@ import { styled } from "styled-components";
 import Card from "./Card";
 
 const Flex = styled.div`
+  margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 16px;
+  grid-gap: 20px;
   height: 700px;
 `;
 

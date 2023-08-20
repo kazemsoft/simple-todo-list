@@ -17,7 +17,7 @@ function App() {
   return (
     <Container>
       <H1>✔️ Task List</H1>
-      <Text>
+      <Text style={{marginTop:-20}}>
         Break your life to simple tasks to get things done!
         <br />
         Does not matter how many tasks you done, It’s important to break to
