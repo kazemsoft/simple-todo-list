@@ -45,7 +45,7 @@ export default function Card({ status }) {
         {tasks.length ? (
           tasks.map((task, index) => (
             <TaskItem
-              key={index}
+              key={`${task.label + index}`}
               status={status}
               index={index}
               onChange={() => null}

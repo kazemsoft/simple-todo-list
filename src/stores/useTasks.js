@@ -54,5 +54,9 @@ export const useTasks = create(
       set((state) => {
         state.tasks[status][index].isDone = checked;
       }),
+    deleteTask: (status, index) =>
+      set((state) => {
+        state.tasks[status].splice(index, 1);
+      }),
   }))
 );

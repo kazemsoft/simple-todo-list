@@ -2,6 +2,7 @@
 import { styled } from "styled-components";
 import crossIcon from "../../assets/svg/crossIcon.svg";
 import { useTasks } from "../../stores/useTasks";
+import { useRef } from "react";
 
 const Box = styled.div`
   background: #fff;
@@ -16,6 +17,7 @@ const Box = styled.div`
   font-size: 12px;
   line-height: 14.52px;
   font-weight: 600;
+  animation: fadeIn 1s;
   & img {
     opacity: 0;
     cursor: pointer;
@@ -42,9 +44,13 @@ export default function TaskItem({ status, index }) {
   const tickTask = useTasks((state) => state.tickTask);
   const removeTask = useTasks((state) => state.removeTask);
   const addTask = useTasks((state) => state.addTask);
+  const deleteTask = useTasks((state) => state.deleteTask);
+  const refItem = useRef();
 
   function handleChangeTick(e) {
     tickTask(status, index, e.target.checked);
+    e.currentTarget.parentNode.style =
+      "opacity:0.5; pointer-events:none;animation:fadeOut 3s;";
     setTimeout(() => {
       if (status < 2) {
         removeTask(status, index);
@@ -54,17 +60,18 @@ export default function TaskItem({ status, index }) {
         addTask(0, task.label, false);
       }
     }, 3000);
+    
   }
   return (
-    <Box $status={status}>
+    <Box $status={status} ref={refItem}>
       <Checkbox
         checked={task.isDone}
         type="checkbox"
         $status={status}
         onChange={handleChangeTick}
       />
-      <Text $lineThrough={status === 2 && task.isDone}>{task.label}</Text>
-      <img src={crossIcon} alt="" />
+      <Text $lineThrough={task.isDone}>{task.label}</Text>
+      <img src={crossIcon} alt="" onClick={() => deleteTask(status, index)} />
     </Box>
   );
 }
