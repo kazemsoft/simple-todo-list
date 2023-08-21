@@ -35,9 +35,8 @@ const Text = styled.div`
 const Checkbox = styled.input`
   width: 16px;
   height: 16px;
-  border: 1px solid
-    ${({ $status }) =>
-      $status === 0 ? "#F3E1DF" : $status === 1 ? "#EAE2CF" : "#DDEED9"};
+  color: ${({ $status }) =>
+    $status === 0 ? "#F3E1DF" : $status === 1 ? "#EAE2CF" : "#DDEED9"};
 `;
 export default function TaskItem({ status, index }) {
   const task = useTasks((state) => state.tasks[status][index]);
