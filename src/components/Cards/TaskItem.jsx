@@ -59,8 +59,13 @@ export default function TaskItem({ status, index }) {
         removeTask(status, index);
         addTask(0, task.label, false);
       }
-    }, 3000);
-    
+    }, 2900);
+  }
+  function handleDelete(e, status, index) {
+    console.log(e.currentTarget.parentNode);
+    e.currentTarget.parentNode.style =
+      "pointer-events:none;animation:fadeOut 1s;";
+    setTimeout(() => deleteTask(status, index), 900);
   }
   return (
     <Box $status={status} ref={refItem}>
@@ -71,7 +76,11 @@ export default function TaskItem({ status, index }) {
         onChange={handleChangeTick}
       />
       <Text $lineThrough={task.isDone}>{task.label}</Text>
-      <img src={crossIcon} alt="" onClick={() => deleteTask(status, index)} />
+      <img
+        src={crossIcon}
+        alt=""
+        onClick={(e) => handleDelete(e, status, index)}
+      />
     </Box>
   );
 }
