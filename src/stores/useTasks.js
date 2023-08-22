@@ -46,6 +46,13 @@ export const useTasks = create(
       set((state) => {
         state.tasks[status].unshift({ label: task, isDone });
       }),
+    addMultiTasks: (status, tasks) =>
+      set((state) => {
+        state.tasks[status] = [
+          ...tasks.map((task) => ({ label: task, isDone: false })),
+          ...state.tasks[status],
+        ];
+      }),
     removeTask: (status, index) =>
       set((state) => {
         state.tasks[status].splice(index, 1);

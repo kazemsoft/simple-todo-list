@@ -12,9 +12,9 @@ const Flex = styled.div`
 export default function Cards() {
   return (
     <Flex>
-      <Card status={0}>dd</Card>
-      <Card status={1}>dd</Card>
-      <Card status={2}>dd</Card>
+      <Card status={0} />
+      <Card status={1} />
+      <Card status={2} hasNewButton={false} />
     </Flex>
   );
 }

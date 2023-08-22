@@ -3,6 +3,8 @@ import { styled } from "styled-components";
 import { useTasks } from "../../stores/useTasks";
 import TaskItems from "./TaskItems";
 import TaskItem from "./TaskItem";
+import Text from "../Typography/Text";
+import NewButton from "./NewButton";
 
 const Box = styled.div`
   border-radius: 10px;
@@ -28,7 +30,7 @@ const NumberOfTasks = styled.div`
   line-height: 14.52px;
 `;
 
-export default function Card({ status }) {
+export default function Card({ status, hasNewButton = true }) {
   const allTasks = useTasks((state) => state.tasks);
   const tasks = allTasks[status];
   return (
@@ -54,9 +56,10 @@ export default function Card({ status }) {
             </TaskItem>
           ))
         ) : (
-          <div>No task yet :|</div>
+          <Text>No task exists here ...</Text>
         )}
       </TaskItems>
+      <NewButton hasNewButton={hasNewButton} status={status} />
     </Box>
   );
 }
